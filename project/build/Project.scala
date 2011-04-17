@@ -3,7 +3,8 @@ import sbt._
 class Project(info: ProjectInfo) extends DefaultProject(info) {
   
   //managed dependencies from built-in repositories
-  val scalatest = "org.scalatest" % "scalatest" % "1.3"
+  val scalaTest = "org.scalatest" % "scalatest" % "1.3"
+  val commonsLang = "commons-lang" % "commons-lang" % "2.3"
   
   //files to go in packaged jars
   val extraResources = "README.md" +++ "LICENSE"
