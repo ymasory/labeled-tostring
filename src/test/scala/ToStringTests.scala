@@ -29,11 +29,17 @@ class ToStringTests extends FunSuite {
   }
 
   test("params still print ugly") {
-    assert(ArrayClass(Array(1,2)).toString contains "@")
+    pending
+    val arr = Array(1,2)
+    def testAt(obj: AnyRef) = assert(obj.toString contains "@")
+
+    testAt(new ArrayClass1(arr))
+    testAt(ArrayClass2(arr))
   }
 }
 
 case class Person1(name: String, age: Int)
 case class Person2(name: String, age: Int) extends LabelledToString
 case class Person3() extends LabelledToString
-case class ArrayClass(array: Array[Int]) extends LabelledToString
+case class ArrayClass1(array: Array[Int])
+case class ArrayClass2(array: Array[Int]) extends LabelledToString
