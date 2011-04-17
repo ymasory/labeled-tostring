@@ -30,8 +30,10 @@ object SpeedTest {
                   "case class objects")
     createObjects({CaseClassPerson(name, age)},
                   "case class objects w/o new")
-    createObjects({new FancyCaseClassPerson(name, age)},
+    createObjects({new LabelledCaseClassPerson(name, age)},
                   "case class objects with LabelledToString")
+    createObjects({new MutableLabelledCaseClassPerson(name, age)},
+                  "case class objects with MutableLabelledToString")
     println()
   }
 
@@ -43,8 +45,10 @@ object SpeedTest {
     after - before
   }
 
-  case class FancyCaseClassPerson(name: String, age: Int)
+  case class LabelledCaseClassPerson(name: String, age: Int)
     extends LabelledToString
+  case class MutableLabelledCaseClassPerson(name: String, age: Int)
+    extends MutableLabelledToString
   case class CaseClassPerson(name: String, age: Int)
   class ClassPerson(name: String, age: Int)
 }

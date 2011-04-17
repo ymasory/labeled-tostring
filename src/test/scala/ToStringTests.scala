@@ -29,7 +29,6 @@ class ToStringTests extends FunSuite {
   }
 
   test("params still print ugly") {
-    pending
     val arr = Array(1,2)
     def testAt(obj: AnyRef) = assert(obj.toString contains "@")
 

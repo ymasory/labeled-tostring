@@ -20,9 +20,14 @@ object ToString {
     setContentEnd(")")
     setUseShortClassName(true)
     setUseIdentityHashCode(false)
+
+    // override def append(buf: StringBuffer, fieldName: String, ar
   }
 }
 
 trait LabelledToString {
   override val toString = ToString.generateString(this)
+}
+trait MutableLabelledToString {
+  override def toString = ToString.generateString(this)
 }
