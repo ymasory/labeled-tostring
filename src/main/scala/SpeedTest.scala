@@ -44,7 +44,7 @@ object SpeedTest {
   }
 
   case class FancyCaseClassPerson(name: String, age: Int) {
-    override val toString = ToStringBuilder.generateString(this)
+    override val toString = ToString.generateString(this)
   }
   case class CaseClassPerson(name: String, age: Int)
   class ClassPerson(name: String, age: Int)

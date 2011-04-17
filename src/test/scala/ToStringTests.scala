@@ -2,13 +2,21 @@ package com.yuvimasory.tostring
 
 import org.scalatest.FunSuite
 
-import ToStringBuilder._
+import ToString._
 
 class ToStringTests extends FunSuite {
 
-  test("no labels") {
+  val name = "John Doe"
+  val age = 30
 
-    println(Person())
+  test("plane old case class") {
+    expect("Person1(" + name + "," + age + ")") {
+      Person1(name, age).toString
+    }
   }
 }
-case class Person() {override val toString = generateString(this)}
+
+case class Person1(name: String, age: Int)
+case class Person2(name: String, age: Int) {
+  override val toString = generateString(this)
+}
