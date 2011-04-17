@@ -14,3 +14,7 @@ object ToString {
     builder.toString
   }
 }
+
+trait LabelledToString {
+  override val toString = ToString.generateString(this)
+}

@@ -31,7 +31,7 @@ object SpeedTest {
     createObjects({CaseClassPerson(name, age)},
                   "case class objects w/o new")
     createObjects({new FancyCaseClassPerson(name, age)},
-                  "case class objects with overridden toString")
+                  "case class objects with LabelledToString")
     println()
   }
 
@@ -43,9 +43,8 @@ object SpeedTest {
     after - before
   }
 
-  case class FancyCaseClassPerson(name: String, age: Int) {
-    override val toString = ToString.generateString(this)
-  }
+  case class FancyCaseClassPerson(name: String, age: Int)
+    extends LabelledToString
   case class CaseClassPerson(name: String, age: Int)
   class ClassPerson(name: String, age: Int)
 }
