@@ -2,17 +2,13 @@ package com.yuvimasory.tostring
 
 import org.scalatest.FunSuite
 
+import ToStringBuilder._
+
 class ToStringTests extends FunSuite {
 
-  test("dummy test works") {
-    assert(1 === 1)
+  test("no labels") {
 
-    expect(1) {
-      2 - 1
-    }
-
-    intercept[IllegalArgumentException] {
-      throw new IllegalArgumentException()
-    }
+    println(Person())
   }
 }
+case class Person() {override val toString = generateString(this)}
