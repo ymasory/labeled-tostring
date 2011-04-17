@@ -3,6 +3,7 @@ package com.yuvimasory.tostring
 import java.lang.reflect.Field
 
 import org.apache.commons.lang.builder._
+import org.apache.commons.lang.ClassUtils
 
 object ToString {
 
@@ -14,7 +15,11 @@ object ToString {
     builder.toString
   }
 
-  object Style extends StandardToStringStyle
+  object Style extends StandardToStringStyle {
+    override def appendClassName(buf: StringBuffer, obj: Object) {
+      buf append ClassUtils.getShortClassName(obj.getClass.getName)
+    }
+  }
 }
 
 trait LabelledToString {
