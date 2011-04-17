@@ -14,7 +14,7 @@ object SpeedTest {
 
   def runTrial() {
 
-    def doTrial(objectCreate: => Unit, desc: String) {
+    def createObjects(objectCreate: => Unit, desc: String) {
       print("making " + numObjects + " " + desc + " ... ")
       println(time {
         for (i <- 0 until numObjects) {
@@ -24,14 +24,14 @@ object SpeedTest {
     }
     val name = "John Doe"
     val age = 30
-    doTrial({new ClassPerson(name, age)},
-            "class objects")
-    doTrial({new CaseClassPerson(name, age)},
-            "case class objects")
-    doTrial({CaseClassPerson(name, age)},
-            "case class objects w/o new")
-    doTrial({new FancyCaseClassPerson(name, age)},
-            "case class objects with overridden toString")
+    createObjects({new ClassPerson(name, age)},
+                  "class objects")
+    createObjects({new CaseClassPerson(name, age)},
+                  "case class objects")
+    createObjects({CaseClassPerson(name, age)},
+                  "case class objects w/o new")
+    createObjects({new FancyCaseClassPerson(name, age)},
+                  "case class objects with overridden toString")
     println()
   }
 
