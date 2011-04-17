@@ -26,10 +26,14 @@ class ToStringTests extends FunSuite {
   test("no params") {
     val expected = "Person3()"
     expect(expected){Person3().toString}
+  }
 
+  test("params still print ugly") {
+    assert(ArrayClass(Array(1,2)).toString contains "@")
   }
 }
 
 case class Person1(name: String, age: Int)
 case class Person2(name: String, age: Int) extends LabelledToString
 case class Person3() extends LabelledToString
+case class ArrayClass(array: Array[Int]) extends LabelledToString
