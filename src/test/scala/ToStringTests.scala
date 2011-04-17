@@ -17,7 +17,7 @@ class ToStringTests extends FunSuite {
     }
   }
 
-  test("in a package") {
+  test("immutable") {
     val expected =
       "Person2(" + nameField + "=" + name + "," + ageField + "=" + age + ")"
     expect(expected){Person2(name, age).toString}
