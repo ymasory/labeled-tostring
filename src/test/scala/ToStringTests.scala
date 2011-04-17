@@ -22,7 +22,14 @@ class ToStringTests extends FunSuite {
       "Person2(" + nameField + "=" + name + "," + ageField + "=" + age + ")"
     expect(expected){Person2(name, age).toString}
   }
+
+  test("no params") {
+    val expected = "Person3()"
+    expect(expected){Person3().toString}
+
+  }
 }
 
 case class Person1(name: String, age: Int)
 case class Person2(name: String, age: Int) extends LabelledToString
+case class Person3() extends LabelledToString
