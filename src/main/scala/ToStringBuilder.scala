@@ -16,9 +16,10 @@ object ToString {
   }
 
   object Style extends StandardToStringStyle {
-    override def appendClassName(buf: StringBuffer, obj: Object) {
-      buf append ClassUtils.getShortClassName(obj.getClass.getName)
-    }
+    setContentStart("(")
+    setContentEnd(")")
+    setUseShortClassName(true)
+    setUseIdentityHashCode(false)
   }
 }
 
