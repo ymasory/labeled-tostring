@@ -90,8 +90,9 @@ class ToStringTests extends FunSuite {
   }
 
   test("array args") {
-    pending
     val arr = Array(1,2)
+    println(new Array2(arr))
+    pending
     def testAt(obj: AnyRef) = {
       println(obj)
       assert(obj.toString contains "@")
