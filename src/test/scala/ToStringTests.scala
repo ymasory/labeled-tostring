@@ -28,8 +28,6 @@ class ToStringTests extends FunSuite {
     expect(expected){Person3().toString}
   }
 
-  test("MutableLabelledToString checks args at each toString call") {pending}
-
   test("null args") {
     expect("NullClass1(null)")(NullClass1(null).toString)
     expect("NullClass2(n=null)")(NullClass2(null).toString)
@@ -88,8 +86,32 @@ class ToStringTests extends FunSuite {
   }
 
   test("object args") {pending}
+
+  test("var parameters") {
+    val c1 = VarParameterClass1(0)
+    expect("VarParameterClass1(0)")(c1.toString)
+    c1.int = 1
+    expect("VarParameterClass1(1)")(c1.toString)
+
+    val c2 = VarParameterClass2(2)
+    expect("VarParameterClass2(int=2)")(c2.toString)
+    c2.int = 3
+    expect("VarParameterClass2(int=3)")(c2.toString)
+  }
+
+  test("val parameters") {
+    expect("ValParameterClass1(0)")(ValParameterClass1(0).toString)
+    expect("ValParameterClass2(int=0)")(ValParameterClass2(0).toString)
+  }
+
+  test("mixed val and var parameters") {pending}
+  test("varargs") {pending}
 }
 
+case class VarParameterClass1(var int: Int)
+case class VarParameterClass2(var int: Int) extends MutableLabelledToString
+case class ValParameterClass1(val int: Int)
+case class ValParameterClass2(val int: Int) extends LabelledToString
 case class FloatClass1(float: Float)
 case class FloatClass2(float: Float) extends LabelledToString
 case class DoubleClass1(double: Double)
