@@ -61,6 +61,7 @@ class ToStringTests extends FunSuite {
     "Double2(double=-0.77)" isStringOf Double2(-0.77)
   }
 
+  test("default package object args") {pending} 
   test("object args") {
     val lst = List(1,2)
     "Object1(List(1, 2))" isStringOf Object1(lst)
