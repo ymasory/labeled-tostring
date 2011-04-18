@@ -1,4 +1,4 @@
-# Labelled `toString`#
+# Labeled `toString`#
 ## Overview ##
 This project provides several traits you can mix into case classes in order to get `toString` representations that include parameter labels.
 
@@ -11,23 +11,23 @@ Here's a normal case class:
     scala> Person("John Doe", 30).toString
     res0: String = Person(John Doe,30)
 
-Here's our labelled case class:
+Here's our labeled case class:
 
     scala> import com.yuvimasory.tostring._
     import com.yuvimasory.tostring._
 
-    scala> case class Person(name: String, age: Int) extends LabelledToStringDef
+    scala> case class Person(name: String, age: Int) extends LabeledToStringDef
     defined class Person
 
     scala> Person("John Doe", 30).toString
     res0: String = Person(name=John Doe,age=30)
 
 ## Choosing a trait ##
-The `com.yuvimasory.tostring` package provides three traits: `LabelledToStringDef`, `LabelledToStringVal`, and `LabelledToStringLazyVal`. They override the default case class's `toString` method with a `def`, `val`, and `lazy val`, respectively.
+The `com.yuvimasory.tostring` package provides three traits: `LabeledToStringDef`, `LabeledToStringVal`, and `LabeledToStringLazyVal`. They override the default case class's `toString` method with a `def`, `val`, and `lazy val`, respectively.
 
-* If you're not sure which to use, start with `LabelledToStringDef`, which works in all cases.
-* Consider `LabelledToStringVal` if you know the case class's parameters are either immutable (e.g., primitive types, immutable collections), or have string representations that never change (e.g., arrays).
-* Try `LabelledToStringLazyVal` if you want lazy initialization.
+* If you're not sure which to use, start with `LabeledToStringDef`, which works in all cases.
+* Consider `LabeledToStringVal` if you know the case class's parameters are either immutable (e.g., primitive types, immutable collections), or have string representations that never change (e.g., arrays).
+* Try `LabeledToStringLazyVal` if you want lazy initialization.
 * Both of the `val` traits may run slightly faster (since they don't have to recompute `toString` every time it's needed) at the cost of more memory usage.
 
 ## Performance ##

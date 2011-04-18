@@ -125,38 +125,38 @@ class ToStringTests extends FunSuite {
 }
 
 case class VarArgs1(str: String*)
-case class VarArgs2(str: String*) extends LabelledToStringVal
+case class VarArgs2(str: String*) extends LabeledToStringVal
 case class ZeroParam1()
-case class ZeroParam2() extends LabelledToStringVal
+case class ZeroParam2() extends LabeledToStringVal
 case class Object1(obj: AnyRef)
-case class Object2(obj: AnyRef) extends LabelledToStringVal
+case class Object2(obj: AnyRef) extends LabeledToStringVal
 case class VarParameter1(var int: Int)
-case class VarParameter2(var int: Int) extends LabelledToStringDef
+case class VarParameter2(var int: Int) extends LabeledToStringDef
 case class ValParameter1(val int: Int)
-case class ValParameter2(val int: Int) extends LabelledToStringVal
+case class ValParameter2(val int: Int) extends LabeledToStringVal
 case class Float1(float: Float)
-case class Float2(float: Float) extends LabelledToStringVal
+case class Float2(float: Float) extends LabeledToStringVal
 case class Double1(double: Double)
-case class Double2(double: Double) extends LabelledToStringVal
+case class Double2(double: Double) extends LabeledToStringVal
 case class Byte1(byte: Byte)
-case class Byte2(byte: Byte) extends LabelledToStringVal
+case class Byte2(byte: Byte) extends LabeledToStringVal
 case class Char1(char: Char)
-case class Char2(char: Char) extends LabelledToStringVal
+case class Char2(char: Char) extends LabeledToStringVal
 case class Short1(short: Short)
-case class Short2(short: Short) extends LabelledToStringVal
+case class Short2(short: Short) extends LabeledToStringVal
 case class Int1(int: Int)
-case class Int2(int: Int) extends LabelledToStringVal
+case class Int2(int: Int) extends LabeledToStringVal
 case class Long1(long: Long)
-case class Long2(long: Long) extends LabelledToStringVal
+case class Long2(long: Long) extends LabeledToStringVal
 case class Boolean1(bool: Boolean)
-case class Boolean2(bool: Boolean) extends LabelledToStringVal
+case class Boolean2(bool: Boolean) extends LabeledToStringVal
 case class Array1(array: Array[Int])
-case class Array2(array: Array[Int]) extends LabelledToStringVal
+case class Array2(array: Array[Int]) extends LabeledToStringVal
 case class Null1(n: Null)
-case class Null2(n: Null) extends LabelledToStringVal
+case class Null2(n: Null) extends LabeledToStringVal
 case class MixedFieldDeclarations1(var i: Int, val j: Int, k: Int)
 case class MixedFieldDeclarations2(var i: Int, val j: Int, k: Int)
-  extends LabelledToStringDef
+  extends LabeledToStringDef
 case class MixedArgTypes1(b: Byte, o: AnyRef, a: Array[Int])
 case class MixedArgTypes2(b: Byte, o: AnyRef, a: Array[Int])
-  extends LabelledToStringVal
+  extends LabeledToStringVal
