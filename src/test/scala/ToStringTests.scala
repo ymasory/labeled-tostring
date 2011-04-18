@@ -61,18 +61,6 @@ class ToStringTests extends FunSuite {
     "Double2(double=-0.77)" sameString Double2(-0.77)
   }
 
-  test("array args") {
-    pending
-    val arr = Array(1,2)
-    def testAt(obj: AnyRef) = {
-      println(obj)
-      assert(obj.toString contains "@")
-    }
-
-    testAt(new Array1(arr))
-    testAt(Array2(arr))
-  }
-
   test("object args") {
     val lst = List(1,2)
     "Object1(List(1, 2))" sameString Object1(lst)
@@ -101,11 +89,30 @@ class ToStringTests extends FunSuite {
     "ValParameter2(int=0)" sameString ValParameter2(0)
   }
 
+  test("array args") {
+    pending
+    val arr = Array(1,2)
+    def testAt(obj: AnyRef) = {
+      println(obj)
+      assert(obj.toString contains "@")
+    }
+
+    testAt(new Array1(arr))
+    testAt(Array2(arr))
+  }
+
   test("mixed val and var parameters") {pending}
-  test("varargs") {pending}
+
+  test("varargs") {
+    "VarArgs1(WrappedArray(ab, cd))" sameString VarArgs1("ab", "cd")
+    "VarArgs2(str=WrappedArray(ab, cd))" sameString VarArgs2("ab", "cd")
+  }
+
   test("multiple arguments") {pending}
 }
 
+case class VarArgs1(str: String*)
+case class VarArgs2(str: String*) extends LabelledToString
 case class ZeroParam1()
 case class ZeroParam2() extends LabelledToString
 case class Object1(obj: AnyRef)
