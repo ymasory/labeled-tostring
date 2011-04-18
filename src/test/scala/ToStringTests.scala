@@ -65,9 +65,15 @@ class ToStringTests extends FunSuite {
     expect("LongClass2(long=-9)")(LongClass2(-9).toString)
   }
 
-  test("float args") {pending}
+  test("float args") {
+    expect("FloatClass1(-0.77)")(FloatClass1(-0.77f).toString)
+    expect("FloatClass2(float=-0.77)")(FloatClass2(-0.77f).toString)
+  }
 
-  test("double args") {pending}
+  test("double args") {
+    expect("DoubleClass1(-0.77)")(DoubleClass1(-0.77).toString)
+    expect("DoubleClass2(double=-0.77)")(DoubleClass2(-0.77).toString)
+  }
 
   test("array args") {
     pending
@@ -83,6 +89,10 @@ class ToStringTests extends FunSuite {
   test("object args") {pending}
 }
 
+case class FloatClass1(float: Float)
+case class FloatClass2(float: Float) extends LabelledToString
+case class DoubleClass1(double: Double)
+case class DoubleClass2(double: Double) extends LabelledToString
 case class ByteClass1(byte: Byte)
 case class ByteClass2(byte: Byte) extends LabelledToString
 case class CharClass1(char: Char)
