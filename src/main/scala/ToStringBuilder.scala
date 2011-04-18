@@ -22,42 +22,13 @@ object ToString {
     setUseIdentityHashCode(false)
     setNullText("null")
 
-    def toStringAppend(buf: StringBuffer, any: Any) = {
-      println("APPENDING AN ARRAY")
-      buf append any.toString
+    override def append(buf: StringBuffer, fieldName: String,
+                        obj: AnyRef, fullDetail: java.lang.Boolean) = {
+      obj match {
+        case arr: Array[_] => buf append arr.toString
+        case _             => super.append(buf, fieldName, obj, fullDetail)
+      }
     }
-
-    override def append(buf: StringBuffer, fieldName: String,
-                        arr: Array[Char], fullDetail: java.lang.Boolean) =
-      toStringAppend(buf, arr)
-
-    override def append(buf: StringBuffer, fieldName: String,
-                        arr: Array[Byte], fullDetail: java.lang.Boolean) =
-      toStringAppend(buf, arr)
-
-    override def append(buf: StringBuffer, fieldName: String,
-                        arr: Array[Short], fullDetail: java.lang.Boolean) =
-      toStringAppend(buf, arr)
-
-    override def append(buf: StringBuffer, fieldName: String,
-                        arr: Array[Int], fullDetail: java.lang.Boolean) =
-      toStringAppend(buf, arr)
-
-    override def append(buf: StringBuffer, fieldName: String,
-                        arr: Array[Long], fullDetail: java.lang.Boolean) =
-      toStringAppend(buf, arr)
-
-    override def append(buf: StringBuffer, fieldName: String,
-                        arr: Array[Float], fullDetail: java.lang.Boolean) =
-      toStringAppend(buf, arr)
-
-    override def append(buf: StringBuffer, fieldName: String,
-                        arr: Array[Double], fullDetail: java.lang.Boolean) =
-      toStringAppend(buf, arr)
-
-    override def append(buf: StringBuffer, fieldName: String,
-                        arr: Array[AnyRef], fullDetail: java.lang.Boolean) =
-      toStringAppend(buf, arr)
   }
 }
 

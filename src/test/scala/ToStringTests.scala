@@ -91,25 +91,34 @@ class ToStringTests extends FunSuite {
 
   test("array args") {
     val arr = Array(1,2)
-    println(new Array2(arr))
-    pending
-    def testAt(obj: AnyRef) = {
-      println(obj)
-      assert(obj.toString contains "@")
-    }
-
-    testAt(new Array1(arr))
-    testAt(Array2(arr))
+    println(Array2(arr))
+    println("Array2(array=" + arr + ")")
+    pending //label isn't printing
+    ("Array1(" + arr + ")") isStringOf Array1(arr)
+    ("Array2(array=" + arr + ")") isStringOf Array2(arr)
   }
 
-  test("mixed val and var parameters") {pending}
+  test("mixed val, var, and neither parameters") {
+    "MixedFieldDeclarations1(1,2,3)" isStringOf MixedFieldDeclarations1(1,2,3)
+    ("MixedFieldDeclarations2(i=1,j=2,k=3)" isStringOf
+       MixedFieldDeclarations2(1,2,3))
+  }
 
   test("varargs") {
     "VarArgs1(WrappedArray(ab, cd))" isStringOf VarArgs1("ab", "cd")
     "VarArgs2(str=WrappedArray(ab, cd))" isStringOf VarArgs2("ab", "cd")
   }
 
-  test("multiple argument types") {pending}
+  test("multiple argument types") {
+    val o = new AnyRef
+    val a = Array(1,2)
+    pending
+    println(MixedArgTypes2(-1, o, a))
+    (("MixedArgTypes1(-1," + o + "," + a + ")") isStringOf
+       MixedArgTypes1(-1, o, a))
+    (("MixedArgTypes2(b=-1,o=" + o + ",a=" + a + ")") isStringOf
+       MixedArgTypes2(-1, o, a))
+  }
 }
 
 case class VarArgs1(str: String*)
@@ -142,3 +151,9 @@ case class Array1(array: Array[Int])
 case class Array2(array: Array[Int]) extends LabelledToString
 case class Null1(n: Null)
 case class Null2(n: Null) extends LabelledToString
+case class MixedFieldDeclarations1(var i: Int, val j: Int, k: Int)
+case class MixedFieldDeclarations2(var i: Int, val j: Int, k: Int)
+  extends LabelledToString
+case class MixedArgTypes1(b: Byte, o: AnyRef, a: Array[Int])
+case class MixedArgTypes2(b: Byte, o: AnyRef, a: Array[Int])
+  extends LabelledToString
