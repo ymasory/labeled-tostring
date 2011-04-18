@@ -1,4 +1,4 @@
-# Labeled `toString`#
+# Labeled ToString#
 ## Overview ##
 This project provides several traits you can mix into case classes in order to get `toString` representations that include parameter labels. That means you get <strong><tt>Person(name=John Doe,age=30)</tt></strong> instead of <strong><tt>Person(John Doe,30)</tt></strong>.
 
