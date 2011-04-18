@@ -24,16 +24,18 @@ object SpeedTest {
     }
     val name = "John Doe"
     val age = 30
-    createObjects({new ClassPerson(name, age)},
+    createObjects({new Person(name, age)},
                   "class objects")
-    createObjects({new CaseClassPerson(name, age)},
+    createObjects({new CasePerson(name, age)},
                   "case class objects")
-    createObjects({CaseClassPerson(name, age)},
+    createObjects({CasePerson(name, age)},
                   "case class objects w/o new")
-    createObjects({new LabeledCaseClassPerson(name, age)},
-                  "case class objects with LabeledToString")
-    createObjects({new MutableLabeledCaseClassPerson(name, age)},
-                  "case class objects with MutableLabeledToString")
+    createObjects({new ValPerson(name, age)},
+                  "case class objects with LabeledToStringVal")
+    createObjects({new ValPerson(name, age)},
+                  "case class objects with LabeledToStringLazyVal")
+    createObjects({new DefPerson(name, age)},
+                  "case class objects with LabeledToStringDef")
     println()
   }
 
@@ -45,10 +47,9 @@ object SpeedTest {
     after - before
   }
 
-  case class LabeledCaseClassPerson(name: String, age: Int)
-    extends LabeledToStringVal
-  case class MutableLabeledCaseClassPerson(name: String, age: Int)
-    extends LabeledToStringDef
-  case class CaseClassPerson(name: String, age: Int)
-  class ClassPerson(name: String, age: Int)
+  case class ValPerson(name: String, age: Int) extends LabeledToStringVal
+  case class LazyValPerson(name: String, age: Int) extends LabeledToStringLazyVal
+  case class DefPerson(name: String, age: Int) extends LabeledToStringDef
+  case class CasePerson(name: String, age: Int)
+  class Person(name: String, age: Int)
 }
