@@ -18,4 +18,4 @@ class DefaultPackageTests extends FunSuite {
   }
 }
 
-case class Person1(name: String, age: Int) extends LabelledToString
+case class Person1(name: String, age: Int) extends LabelledToStringVal

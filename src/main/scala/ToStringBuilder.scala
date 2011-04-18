@@ -32,9 +32,12 @@ object ToString {
   }
 }
 
-trait LabelledToString {
+trait LabelledToStringVal {
   override val toString = ToString.generateString(this)
 }
-trait MutableLabelledToString {
+trait LabelledToStringLazyVal {
+  override lazy val toString = ToString.generateString(this)
+}
+trait LabelledToStringDef {
   override def toString = ToString.generateString(this)
 }

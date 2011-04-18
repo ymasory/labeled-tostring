@@ -46,9 +46,9 @@ object SpeedTest {
   }
 
   case class LabelledCaseClassPerson(name: String, age: Int)
-    extends LabelledToString
+    extends LabelledToStringVal
   case class MutableLabelledCaseClassPerson(name: String, age: Int)
-    extends MutableLabelledToString
+    extends LabelledToStringDef
   case class CaseClassPerson(name: String, age: Int)
   class ClassPerson(name: String, age: Int)
 }
