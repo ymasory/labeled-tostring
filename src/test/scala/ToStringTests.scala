@@ -6,87 +6,87 @@ import ToString._
 
 class ToStringTests extends FunSuite {
 
-  implicit def string2SameString(str : String) = new SameString(str)
-  class SameString(str: String) {
-    def sameString(any: Any) = expect(str)(any.toString)
+  implicit def string2IsStringOf(str : String) = new IsStringOf(str)
+  class IsStringOf(str: String) {
+    def isStringOf(any: Any) = expect(str)(any.toString)
   }
 
   test("zero params") {
-    "ZeroParam1()" sameString ZeroParam1()
-    "ZeroParam2()" sameString ZeroParam2()
+    "ZeroParam1()" isStringOf ZeroParam1()
+    "ZeroParam2()" isStringOf ZeroParam2()
   }
 
   test("null args") {
-    "Null1(null)" sameString Null1(null)
-    "Null2(n=null)" sameString Null2(null)
+    "Null1(null)" isStringOf Null1(null)
+    "Null2(n=null)" isStringOf Null2(null)
   }
 
   test("boolean args") {
-    "Boolean1(true)" sameString Boolean1(true)
-    "Boolean2(bool=true)" sameString Boolean2(true)
+    "Boolean1(true)" isStringOf Boolean1(true)
+    "Boolean2(bool=true)" isStringOf Boolean2(true)
   }
 
   test("char args") {
-    "Char1(c)" sameString Char1('c')
-    "Char2(char=c)" sameString Char2('c')
+    "Char1(c)" isStringOf Char1('c')
+    "Char2(char=c)" isStringOf Char2('c')
   }
 
   test("byte args") {
-    "Byte1(-5)" sameString Byte1(-5)
-    "Byte2(byte=-5)" sameString Byte2(-5)
+    "Byte1(-5)" isStringOf Byte1(-5)
+    "Byte2(byte=-5)" isStringOf Byte2(-5)
   }
 
   test("short args") {
-    "Short1(-9)" sameString Short1(-9)
-    "Short2(short=-9)" sameString Short2(-9)
+    "Short1(-9)" isStringOf Short1(-9)
+    "Short2(short=-9)" isStringOf Short2(-9)
   }
 
   test("int args") {
-    "Int1(-9)" sameString Int1(-9)
-    "Int2(int=-9)" sameString Int2(-9)
+    "Int1(-9)" isStringOf Int1(-9)
+    "Int2(int=-9)" isStringOf Int2(-9)
   }
 
   test("long args") {
-    "Long1(-9)" sameString Long1(-9)
-     "Long2(long=-9)" sameString Long2(-9)
+    "Long1(-9)" isStringOf Long1(-9)
+     "Long2(long=-9)" isStringOf Long2(-9)
   }
 
   test("float args") {
-    "Float1(-0.77)" sameString Float1(-0.77f)
-    "Float2(float=-0.77)" sameString Float2(-0.77f)
+    "Float1(-0.77)" isStringOf Float1(-0.77f)
+    "Float2(float=-0.77)" isStringOf Float2(-0.77f)
   }
 
   test("double args") {
-    "Double1(-0.77)" sameString Double1(-0.77)
-    "Double2(double=-0.77)" sameString Double2(-0.77)
+    "Double1(-0.77)" isStringOf Double1(-0.77)
+    "Double2(double=-0.77)" isStringOf Double2(-0.77)
   }
 
   test("object args") {
     val lst = List(1,2)
-    "Object1(List(1, 2))" sameString Object1(lst)
-    "Object2(obj=List(1, 2))" sameString Object2(lst)
+    "Object1(List(1, 2))" isStringOf Object1(lst)
+    "Object2(obj=List(1, 2))" isStringOf Object2(lst)
 
     val obj = new AnyRef
     val objStr = obj
-    ("Object1(" + obj + ")") sameString Object1(obj)
-    ("Object2(obj=" + obj + ")") sameString Object2(obj)
+    ("Object1(" + obj + ")") isStringOf Object1(obj)
+    ("Object2(obj=" + obj + ")") isStringOf Object2(obj)
   }
 
   test("var parameters") {
     val c1 = VarParameter1(0)
-    "VarParameter1(0)" sameString c1
+    "VarParameter1(0)" isStringOf c1
     c1.int = 1
-    "VarParameter1(1)" sameString c1
+    "VarParameter1(1)" isStringOf c1
 
     val c2 = VarParameter2(2)
-    "VarParameter2(int=2)" sameString c2
+    "VarParameter2(int=2)" isStringOf c2
     c2.int = 3
-    "VarParameter2(int=3)" sameString c2
+    "VarParameter2(int=3)" isStringOf c2
   }
 
   test("val parameters") {
-    "ValParameter1(0)" sameString ValParameter1(0)
-    "ValParameter2(int=0)" sameString ValParameter2(0)
+    "ValParameter1(0)" isStringOf ValParameter1(0)
+    "ValParameter2(int=0)" isStringOf ValParameter2(0)
   }
 
   test("array args") {
@@ -104,11 +104,11 @@ class ToStringTests extends FunSuite {
   test("mixed val and var parameters") {pending}
 
   test("varargs") {
-    "VarArgs1(WrappedArray(ab, cd))" sameString VarArgs1("ab", "cd")
-    "VarArgs2(str=WrappedArray(ab, cd))" sameString VarArgs2("ab", "cd")
+    "VarArgs1(WrappedArray(ab, cd))" isStringOf VarArgs1("ab", "cd")
+    "VarArgs2(str=WrappedArray(ab, cd))" isStringOf VarArgs2("ab", "cd")
   }
 
-  test("multiple arguments") {pending}
+  test("multiple argument types") {pending}
 }
 
 case class VarArgs1(str: String*)
