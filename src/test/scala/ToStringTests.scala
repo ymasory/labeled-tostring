@@ -85,7 +85,20 @@ class ToStringTests extends FunSuite {
     testAt(ArrayClass2(arr))
   }
 
-  test("object args") {pending}
+  test("object args") {
+    val lst = List(1,2)
+    expect("ObjectClass1(List(1, 2))")(ObjectClass1(lst).toString)
+    expect("ObjectClass2(obj=List(1, 2))")(ObjectClass2(lst).toString)
+
+    val obj = new AnyRef
+    val objStr = obj.toString
+    expect("ObjectClass1(" + obj.toString + ")") {
+      ObjectClass1(obj).toString
+    }
+    expect("ObjectClass2(obj=" + obj.toString + ")") {
+      ObjectClass2(obj).toString
+    }
+  }
 
   test("var parameters") {
     val c1 = VarParameterClass1(0)
@@ -108,6 +121,8 @@ class ToStringTests extends FunSuite {
   test("varargs") {pending}
 }
 
+case class ObjectClass1(obj: AnyRef)
+case class ObjectClass2(obj: AnyRef) extends LabelledToString
 case class VarParameterClass1(var int: Int)
 case class VarParameterClass2(var int: Int) extends MutableLabelledToString
 case class ValParameterClass1(val int: Int)
