@@ -6,56 +6,59 @@ import ToString._
 
 class ToStringTests extends FunSuite {
 
-  def sameString(a1: Any)(a2: Any) = expect(a1)(a2.toString)
+  implicit def string2SameString(str : String) = new SameString(str)
+  class SameString(str: String) {
+    def sameString(any: Any) = expect(str)(any.toString)
+  }
 
   test("zero params") {
-    sameString("ZeroParam1()")(ZeroParam1())
-    sameString("ZeroParam2()")(ZeroParam2())
+    "ZeroParam1()" sameString ZeroParam1()
+    "ZeroParam2()" sameString ZeroParam2()
   }
 
   test("null args") {
-    sameString("Null1(null)")(Null1(null))
-    sameString("Null2(n=null)")(Null2(null))
+    "Null1(null)" sameString Null1(null)
+    "Null2(n=null)" sameString Null2(null)
   }
 
   test("boolean args") {
-    sameString("Boolean1(true)")(Boolean1(true))
-    sameString("Boolean2(bool=true)")(Boolean2(true))
+    "Boolean1(true)" sameString Boolean1(true)
+    "Boolean2(bool=true)" sameString Boolean2(true)
   }
 
   test("char args") {
-    sameString("Char1(c)")(Char1('c'))
-    sameString("Char2(char=c)")(Char2('c'))
+    "Char1(c)" sameString Char1('c')
+    "Char2(char=c)" sameString Char2('c')
   }
 
   test("byte args") {
-    sameString("Byte1(-5)")(Byte1(-5))
-    sameString("Byte2(byte=-5)")(Byte2(-5))
+    "Byte1(-5)" sameString Byte1(-5)
+    "Byte2(byte=-5)" sameString Byte2(-5)
   }
 
   test("short args") {
-    sameString("Short1(-9)")(Short1(-9))
-    sameString("Short2(short=-9)")(Short2(-9))
+    "Short1(-9)" sameString Short1(-9)
+    "Short2(short=-9)" sameString Short2(-9)
   }
 
   test("int args") {
-    sameString("Int1(-9)")(Int1(-9))
-    sameString("Int2(int=-9)")(Int2(-9))
+    "Int1(-9)" sameString Int1(-9)
+    "Int2(int=-9)" sameString Int2(-9)
   }
 
   test("long args") {
-    sameString("Long1(-9)")(Long1(-9))
-    sameString("Long2(long=-9)")(Long2(-9))
+    "Long1(-9)" sameString Long1(-9)
+     "Long2(long=-9)" sameString Long2(-9)
   }
 
   test("float args") {
-    sameString("Float1(-0.77)")(Float1(-0.77f))
-    sameString("Float2(float=-0.77)")(Float2(-0.77f))
+    "Float1(-0.77)" sameString Float1(-0.77f)
+    "Float2(float=-0.77)" sameString Float2(-0.77f)
   }
 
   test("double args") {
-    sameString("Double1(-0.77)")(Double1(-0.77))
-    sameString("Double2(double=-0.77)")(Double2(-0.77))
+    "Double1(-0.77)" sameString Double1(-0.77)
+    "Double2(double=-0.77)" sameString Double2(-0.77)
   }
 
   test("array args") {
@@ -72,34 +75,30 @@ class ToStringTests extends FunSuite {
 
   test("object args") {
     val lst = List(1,2)
-    sameString("Object1(List(1, 2))")(Object1(lst))
-    sameString("Object2(obj=List(1, 2))")(Object2(lst))
+    "Object1(List(1, 2))" sameString Object1(lst)
+    "Object2(obj=List(1, 2))" sameString Object2(lst)
 
     val obj = new AnyRef
     val objStr = obj
-    sameString("Object1(" + obj + ")") {
-      Object1(obj)
-    }
-    sameString("Object2(obj=" + obj + ")") {
-      Object2(obj)
-    }
+    ("Object1(" + obj + ")") sameString Object1(obj)
+    ("Object2(obj=" + obj + ")") sameString Object2(obj)
   }
 
   test("var parameters") {
     val c1 = VarParameter1(0)
-    sameString("VarParameter1(0)")(c1)
+    "VarParameter1(0)" sameString c1
     c1.int = 1
-    sameString("VarParameter1(1)")(c1)
+    "VarParameter1(1)" sameString c1
 
     val c2 = VarParameter2(2)
-    sameString("VarParameter2(int=2)")(c2)
+    "VarParameter2(int=2)" sameString c2
     c2.int = 3
-    sameString("VarParameter2(int=3)")(c2)
+    "VarParameter2(int=3)" sameString c2
   }
 
   test("val parameters") {
-    sameString("ValParameter1(0)")(ValParameter1(0))
-    sameString("ValParameter2(int=0)")(ValParameter2(0))
+    "ValParameter1(0)" sameString ValParameter1(0)
+    "ValParameter2(int=0)" sameString ValParameter2(0)
   }
 
   test("mixed val and var parameters") {pending}
