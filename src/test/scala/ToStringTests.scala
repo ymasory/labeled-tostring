@@ -31,8 +31,8 @@ class ToStringTests extends FunSuite {
   test("MutableLabelledToString checks args at each toString call") {pending}
 
   test("null args") {
-    pending
-    assert(Person1(null, age).toString === Person2(null, age).toString)
+    expect("NullClass1(null)")(NullClass1(null).toString)
+    expect("NullClass2(n=null)")(NullClass2(null).toString)
   }
 
   test("boolean args") {
@@ -86,6 +86,7 @@ class ToStringTests extends FunSuite {
     testAt(new ArrayClass1(arr))
     testAt(ArrayClass2(arr))
   }
+
   test("object args") {pending}
 }
 
@@ -107,6 +108,8 @@ case class BooleanClass1(bool: Boolean)
 case class BooleanClass2(bool: Boolean) extends LabelledToString
 case class ArrayClass1(array: Array[Int])
 case class ArrayClass2(array: Array[Int]) extends LabelledToString
+case class NullClass1(n: Null)
+case class NullClass2(n: Null) extends LabelledToString
 
 case class Person1(name: String, age: Int)
 case class Person2(name: String, age: Int) extends LabelledToString

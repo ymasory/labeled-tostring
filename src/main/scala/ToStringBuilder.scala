@@ -20,6 +20,7 @@ object ToString {
     setContentEnd(")")
     setUseShortClassName(true)
     setUseIdentityHashCode(false)
+    setNullText("null")
   }
 }
 
