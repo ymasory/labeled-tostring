@@ -112,6 +112,8 @@ class ToStringTests extends FunSuite {
   test("multiple argument types") {
     val o = new AnyRef
     val a = Array(1,2)
+    println(MixedArgTypes1(-1, o, a))
+    println(MixedArgTypes2(-1, o, a))
     pending
     println(MixedArgTypes2(-1, o, a))
     (("MixedArgTypes1(-1," + o + "," + a + ")") isStringOf
