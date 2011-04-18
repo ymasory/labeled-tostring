@@ -6,103 +6,100 @@ import ToString._
 
 class ToStringTests extends FunSuite {
 
-  val nameField = "name"
-  val name = "John Doe"
-  val ageField = "age"
-  val age = 30
+  def sameString(a1: Any)(a2: Any) = expect(a1)(a2.toString)
 
   test("zero params") {
-    expect("ZeroParamClass1()")(ZeroParamClass1().toString)
-    expect("ZeroParamClass2()")(ZeroParamClass2().toString)
+    sameString("ZeroParam1()")(ZeroParam1())
+    sameString("ZeroParam2()")(ZeroParam2())
   }
 
   test("null args") {
-    expect("NullClass1(null)")(NullClass1(null).toString)
-    expect("NullClass2(n=null)")(NullClass2(null).toString)
+    sameString("Null1(null)")(Null1(null))
+    sameString("Null2(n=null)")(Null2(null))
   }
 
   test("boolean args") {
-    expect("BooleanClass1(true)")(BooleanClass1(true).toString)
-    expect("BooleanClass2(bool=true)")(BooleanClass2(true).toString)
+    sameString("Boolean1(true)")(Boolean1(true))
+    sameString("Boolean2(bool=true)")(Boolean2(true))
   }
 
   test("char args") {
-    expect("CharClass1(c)")(CharClass1('c').toString)
-    expect("CharClass2(char=c)")(CharClass2('c').toString)
+    sameString("Char1(c)")(Char1('c'))
+    sameString("Char2(char=c)")(Char2('c'))
   }
 
   test("byte args") {
-    expect("ByteClass1(-5)")(ByteClass1(-5).toString)
-    expect("ByteClass2(byte=-5)")(ByteClass2(-5).toString)
+    sameString("Byte1(-5)")(Byte1(-5))
+    sameString("Byte2(byte=-5)")(Byte2(-5))
   }
 
   test("short args") {
-    expect("ShortClass1(-9)")(ShortClass1(-9).toString)
-    expect("ShortClass2(short=-9)")(ShortClass2(-9).toString)
+    sameString("Short1(-9)")(Short1(-9))
+    sameString("Short2(short=-9)")(Short2(-9))
   }
 
   test("int args") {
-    expect("IntClass1(-9)")(IntClass1(-9).toString)
-    expect("IntClass2(int=-9)")(IntClass2(-9).toString)
+    sameString("Int1(-9)")(Int1(-9))
+    sameString("Int2(int=-9)")(Int2(-9))
   }
 
   test("long args") {
-    expect("LongClass1(-9)")(LongClass1(-9).toString)
-    expect("LongClass2(long=-9)")(LongClass2(-9).toString)
+    sameString("Long1(-9)")(Long1(-9))
+    sameString("Long2(long=-9)")(Long2(-9))
   }
 
   test("float args") {
-    expect("FloatClass1(-0.77)")(FloatClass1(-0.77f).toString)
-    expect("FloatClass2(float=-0.77)")(FloatClass2(-0.77f).toString)
+    sameString("Float1(-0.77)")(Float1(-0.77f))
+    sameString("Float2(float=-0.77)")(Float2(-0.77f))
   }
 
   test("double args") {
-    expect("DoubleClass1(-0.77)")(DoubleClass1(-0.77).toString)
-    expect("DoubleClass2(double=-0.77)")(DoubleClass2(-0.77).toString)
+    sameString("Double1(-0.77)")(Double1(-0.77))
+    sameString("Double2(double=-0.77)")(Double2(-0.77))
   }
 
   test("array args") {
     pending
     val arr = Array(1,2)
     def testAt(obj: AnyRef) = {
-      println(obj.toString)
+      println(obj)
       assert(obj.toString contains "@")
     }
 
-    testAt(new ArrayClass1(arr))
-    testAt(ArrayClass2(arr))
+    testAt(new Array1(arr))
+    testAt(Array2(arr))
   }
 
   test("object args") {
     val lst = List(1,2)
-    expect("ObjectClass1(List(1, 2))")(ObjectClass1(lst).toString)
-    expect("ObjectClass2(obj=List(1, 2))")(ObjectClass2(lst).toString)
+    sameString("Object1(List(1, 2))")(Object1(lst))
+    sameString("Object2(obj=List(1, 2))")(Object2(lst))
 
     val obj = new AnyRef
-    val objStr = obj.toString
-    expect("ObjectClass1(" + obj.toString + ")") {
-      ObjectClass1(obj).toString
+    val objStr = obj
+    sameString("Object1(" + obj + ")") {
+      Object1(obj)
     }
-    expect("ObjectClass2(obj=" + obj.toString + ")") {
-      ObjectClass2(obj).toString
+    sameString("Object2(obj=" + obj + ")") {
+      Object2(obj)
     }
   }
 
   test("var parameters") {
-    val c1 = VarParameterClass1(0)
-    expect("VarParameterClass1(0)")(c1.toString)
+    val c1 = VarParameter1(0)
+    sameString("VarParameter1(0)")(c1)
     c1.int = 1
-    expect("VarParameterClass1(1)")(c1.toString)
+    sameString("VarParameter1(1)")(c1)
 
-    val c2 = VarParameterClass2(2)
-    expect("VarParameterClass2(int=2)")(c2.toString)
+    val c2 = VarParameter2(2)
+    sameString("VarParameter2(int=2)")(c2)
     c2.int = 3
-    expect("VarParameterClass2(int=3)")(c2.toString)
+    sameString("VarParameter2(int=3)")(c2)
   }
 
   test("val parameters") {
-    expect("ValParameterClass1(0)")(ValParameterClass1(0).toString)
-    expect("ValParameterClass2(int=0)")(ValParameterClass2(0).toString)
+    sameString("ValParameter1(0)")(ValParameter1(0))
+    sameString("ValParameter2(int=0)")(ValParameter2(0))
   }
 
   test("mixed val and var parameters") {pending}
@@ -110,31 +107,31 @@ class ToStringTests extends FunSuite {
   test("multiple arguments") {pending}
 }
 
-case class ZeroParamClass1()
-case class ZeroParamClass2() extends LabelledToString
-case class ObjectClass1(obj: AnyRef)
-case class ObjectClass2(obj: AnyRef) extends LabelledToString
-case class VarParameterClass1(var int: Int)
-case class VarParameterClass2(var int: Int) extends MutableLabelledToString
-case class ValParameterClass1(val int: Int)
-case class ValParameterClass2(val int: Int) extends LabelledToString
-case class FloatClass1(float: Float)
-case class FloatClass2(float: Float) extends LabelledToString
-case class DoubleClass1(double: Double)
-case class DoubleClass2(double: Double) extends LabelledToString
-case class ByteClass1(byte: Byte)
-case class ByteClass2(byte: Byte) extends LabelledToString
-case class CharClass1(char: Char)
-case class CharClass2(char: Char) extends LabelledToString
-case class ShortClass1(short: Short)
-case class ShortClass2(short: Short) extends LabelledToString
-case class IntClass1(int: Int)
-case class IntClass2(int: Int) extends LabelledToString
-case class LongClass1(long: Long)
-case class LongClass2(long: Long) extends LabelledToString
-case class BooleanClass1(bool: Boolean)
-case class BooleanClass2(bool: Boolean) extends LabelledToString
-case class ArrayClass1(array: Array[Int])
-case class ArrayClass2(array: Array[Int]) extends LabelledToString
-case class NullClass1(n: Null)
-case class NullClass2(n: Null) extends LabelledToString
+case class ZeroParam1()
+case class ZeroParam2() extends LabelledToString
+case class Object1(obj: AnyRef)
+case class Object2(obj: AnyRef) extends LabelledToString
+case class VarParameter1(var int: Int)
+case class VarParameter2(var int: Int) extends MutableLabelledToString
+case class ValParameter1(val int: Int)
+case class ValParameter2(val int: Int) extends LabelledToString
+case class Float1(float: Float)
+case class Float2(float: Float) extends LabelledToString
+case class Double1(double: Double)
+case class Double2(double: Double) extends LabelledToString
+case class Byte1(byte: Byte)
+case class Byte2(byte: Byte) extends LabelledToString
+case class Char1(char: Char)
+case class Char2(char: Char) extends LabelledToString
+case class Short1(short: Short)
+case class Short2(short: Short) extends LabelledToString
+case class Int1(int: Int)
+case class Int2(int: Int) extends LabelledToString
+case class Long1(long: Long)
+case class Long2(long: Long) extends LabelledToString
+case class Boolean1(bool: Boolean)
+case class Boolean2(bool: Boolean) extends LabelledToString
+case class Array1(array: Array[Int])
+case class Array2(array: Array[Int]) extends LabelledToString
+case class Null1(n: Null)
+case class Null2(n: Null) extends LabelledToString
