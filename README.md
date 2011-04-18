@@ -20,7 +20,7 @@ Here's our labelled case class:
     defined class Person
 
     scala> Person("John Doe", 30).toString
-    res0: String = line2.object..iw..iw..iw..iw.Person(name=John Doe,age=30)
+    res0: String = Person(name=John Doe,age=30)
 
 ## Choosing a trait ##
 The `com.yuvimasory.tostring` package provides three traits: `LabelledToStringDef`, `LabelledToStringVal`, and `LabelledToStringLazyVal`. They override the default case class's `toString` method with a `def`, `val`, and `lazy val`, respectively.
