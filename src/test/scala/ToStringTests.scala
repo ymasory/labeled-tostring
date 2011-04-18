@@ -34,14 +34,41 @@ class ToStringTests extends FunSuite {
     pending
     assert(Person1(null, age).toString === Person2(null, age).toString)
   }
-  test("boolean args") {pending}
-  test("char args") {pending}
-  test("byte args") {pending}
-  test("short args") {pending}
-  test("int args") {pending}
-  test("long args") {pending}
+
+  test("boolean args") {
+    expect("BooleanClass1(true)")(BooleanClass1(true).toString)
+    expect("BooleanClass2(bool=true)")(BooleanClass2(true).toString)
+  }
+
+  test("char args") {
+    expect("CharClass1(c)")(CharClass1('c').toString)
+    expect("CharClass2(char=c)")(CharClass2('c').toString)
+  }
+
+  test("byte args") {
+    expect("ByteClass1(-5)")(ByteClass1(-5).toString)
+    expect("ByteClass2(byte=-5)")(ByteClass2(-5).toString)
+  }
+
+  test("short args") {
+    expect("ShortClass1(-9)")(ShortClass1(-9).toString)
+    expect("ShortClass2(short=-9)")(ShortClass2(-9).toString)
+  }
+
+  test("int args") {
+    expect("IntClass1(-9)")(IntClass1(-9).toString)
+    expect("IntClass2(int=-9)")(IntClass2(-9).toString)
+  }
+
+  test("long args") {
+    expect("LongClass1(-9)")(LongClass1(-9).toString)
+    expect("LongClass2(long=-9)")(LongClass2(-9).toString)
+  }
+
   test("float args") {pending}
+
   test("double args") {pending}
+
   test("array args") {
     pending
     val arr = Array(1,2)
@@ -56,8 +83,21 @@ class ToStringTests extends FunSuite {
   test("object args") {pending}
 }
 
+case class ByteClass1(byte: Byte)
+case class ByteClass2(byte: Byte) extends LabelledToString
+case class CharClass1(char: Char)
+case class CharClass2(char: Char) extends LabelledToString
+case class ShortClass1(short: Short)
+case class ShortClass2(short: Short) extends LabelledToString
+case class IntClass1(int: Int)
+case class IntClass2(int: Int) extends LabelledToString
+case class LongClass1(long: Long)
+case class LongClass2(long: Long) extends LabelledToString
+case class BooleanClass1(bool: Boolean)
+case class BooleanClass2(bool: Boolean) extends LabelledToString
+case class ArrayClass1(array: Array[Int])
+case class ArrayClass2(array: Array[Int]) extends LabelledToString
+
 case class Person1(name: String, age: Int)
 case class Person2(name: String, age: Int) extends LabelledToString
 case class Person3() extends LabelledToString
-case class ArrayClass1(array: Array[Int])
-case class ArrayClass2(array: Array[Int]) extends LabelledToString
