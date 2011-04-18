@@ -11,21 +11,9 @@ class ToStringTests extends FunSuite {
   val ageField = "age"
   val age = 30
 
-  test("plane old case class") {
-    expect("Person1(" + name + "," + age + ")") {
-      Person1(name, age).toString
-    }
-  }
-
-  test("simple use of LabelledToString") {
-    val expected =
-      "Person2(" + nameField + "=" + name + "," + ageField + "=" + age + ")"
-    expect(expected){Person2(name, age).toString}
-  }
-
   test("zero params") {
-    val expected = "Person3()"
-    expect(expected){Person3().toString}
+    expect("ZeroParamClass1()")(ZeroParamClass1().toString)
+    expect("ZeroParamClass2()")(ZeroParamClass2().toString)
   }
 
   test("null args") {
@@ -119,8 +107,11 @@ class ToStringTests extends FunSuite {
 
   test("mixed val and var parameters") {pending}
   test("varargs") {pending}
+  test("multiple arguments") {pending}
 }
 
+case class ZeroParamClass1()
+case class ZeroParamClass2() extends LabelledToString
 case class ObjectClass1(obj: AnyRef)
 case class ObjectClass2(obj: AnyRef) extends LabelledToString
 case class VarParameterClass1(var int: Int)
@@ -147,7 +138,3 @@ case class ArrayClass1(array: Array[Int])
 case class ArrayClass2(array: Array[Int]) extends LabelledToString
 case class NullClass1(n: Null)
 case class NullClass2(n: Null) extends LabelledToString
-
-case class Person1(name: String, age: Int)
-case class Person2(name: String, age: Int) extends LabelledToString
-case class Person3() extends LabelledToString
