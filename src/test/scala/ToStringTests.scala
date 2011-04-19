@@ -61,7 +61,6 @@ class ToStringTests extends FunSuite {
     "Double2(double=-0.77)" isStringOf Double2(-0.77)
   }
 
-  test("default package object args") {pending} 
   test("object args") {
     val lst = List(1,2)
     "Object1(List(1, 2))" isStringOf Object1(lst)
@@ -114,9 +113,10 @@ class ToStringTests extends FunSuite {
     val o = new AnyRef
     val a = Array(1,2)
     println(MixedArgTypes1(-1, o, a))
+    println(("MixedArgTypes1(-1," + o + "," + a + ")"))
     println(MixedArgTypes2(-1, o, a))
-    pending
-    println(MixedArgTypes2(-1, o, a))
+    println(("MixedArgTypes2(b=-1,o=" + o + ",a=" + a + ")"))
+    pending //"a" label isn't printing
     (("MixedArgTypes1(-1," + o + "," + a + ")") isStringOf
        MixedArgTypes1(-1, o, a))
     (("MixedArgTypes2(b=-1,o=" + o + ",a=" + a + ")") isStringOf
