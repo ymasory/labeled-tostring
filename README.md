@@ -29,5 +29,5 @@ The `com.yuvimasory.tostring` package provides three traits: `LabeledToStringDef
 The `ToString` traits use Apache Commons Lang under the hood, which uses reflection to find the parameter lables. Surprisingly, there does not seem to be any performance cost for this. In fact, using these traits actually results in code *faster* than the default case class `toString`. Try the tests yourself by running `sbt run`.
 
 ## Warning ##
-* These traits do not produce the right strings in the REPL yet due to the way the REPL wrapps code and mangles names.
+* These traits do not produce the right strings in the REPL yet due to the way the REPL wraps code and mangles names.
 * These traits do not work if you add bodies to your case classes (i.e., additional methods or fields).
