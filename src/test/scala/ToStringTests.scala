@@ -91,9 +91,6 @@ class ToStringTests extends FunSuite {
 
   test("array args") {
     val arr = Array(1,2)
-    println(Array2(arr))
-    println("Array2(array=" + arr + ")")
-    pending //label isn't printing
     ("Array1(" + arr + ")") isStringOf Array1(arr)
     ("Array2(array=" + arr + ")") isStringOf Array2(arr)
   }
@@ -112,11 +109,6 @@ class ToStringTests extends FunSuite {
   test("multiple argument types") {
     val o = new AnyRef
     val a = Array(1,2)
-    println(MixedArgTypes1(-1, o, a))
-    println(("MixedArgTypes1(-1," + o + "," + a + ")"))
-    println(MixedArgTypes2(-1, o, a))
-    println(("MixedArgTypes2(b=-1,o=" + o + ",a=" + a + ")"))
-    pending //"a" label isn't printing
     (("MixedArgTypes1(-1," + o + "," + a + ")") isStringOf
        MixedArgTypes1(-1, o, a))
     (("MixedArgTypes2(b=-1,o=" + o + ",a=" + a + ")") isStringOf

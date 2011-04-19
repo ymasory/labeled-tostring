@@ -25,7 +25,11 @@ object ToString {
     override def append(buf: StringBuffer, fieldName: String,
                         obj: AnyRef, fullDetail: java.lang.Boolean) = {
       obj match {
-        case arr: Array[_] => buf append arr.toString
+        case arr: Array[_] => {
+          super.appendFieldStart(buf, fieldName)
+          buf append arr.toString
+          super.appendFieldEnd(buf, fieldName)
+        }        
         case _             => super.append(buf, fieldName, obj, fullDetail)
       }
     }
