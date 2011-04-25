@@ -1,6 +1,17 @@
 import sbt._
 
 class Project(info: ProjectInfo) extends DefaultProject(info) {
+
+  //deployment
+  override def managedStyle = ManagedStyle.Maven
+  val publishTo = (
+    "Scala Tools Nexus" at
+    "http://nexus.scala-tools.org/content/repositories/snapshots")
+  Credentials(Path.userHome / ".ivy2"/ ".credentials", log)
+  override def packageSrcJar= defaultJarPath("-sources.jar")
+  val sourceArtifact = Artifact.sources(artifactID)
+  override def packageToPublishActions = super.packageToPublishActions ++
+    Seq(packageSrc)
   
   //managed dependencies from built-in repositories
   val scalaTest = "org.scalatest" % "scalatest" % "1.3"
