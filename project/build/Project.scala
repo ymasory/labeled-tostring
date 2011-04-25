@@ -6,7 +6,7 @@ class Project(info: ProjectInfo) extends DefaultProject(info) {
   override def managedStyle = ManagedStyle.Maven
   val publishTo = (
     "Scala Tools Nexus" at
-    "http://nexus.scala-tools.org/content/repositories/snapshots")
+    "http://nexus.scala-tools.org/content/repositories/releases")
   Credentials(Path.userHome / ".ivy2"/ ".credentials", log)
   override def packageSrcJar= defaultJarPath("-sources.jar")
   val sourceArtifact = Artifact.sources(artifactID)
