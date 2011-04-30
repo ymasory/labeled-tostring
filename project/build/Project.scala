@@ -14,15 +14,8 @@ class Project(info: ProjectInfo) extends DefaultProject(info) {
     Seq(packageSrc)
   
   //managed dependencies from built-in repositories
-  val SonatypeSnapshotRepo =
-    MavenRepository("Sonatype OSS Repo",
-                    "http://oss.sonatype.org/content/repositories/snapshots")
   val scalaTest = "org.scalatest" % "scalatest" % "1.3"
   val commonsLang = "commons-lang" % "commons-lang" % "2.3"
-  val instrumenter =
-    "com.google.code.java-allocation-instrumenter" %
-    "java-allocation-instrumenter" % "2.0"
-  val caliper = "com.google.code.caliper" % "caliper" % "1.0-SNAPSHOT"
   
   //files to go in packaged jars
   val extraResources = "README.md" +++ "LICENSE"
