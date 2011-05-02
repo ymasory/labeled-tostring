@@ -31,7 +31,7 @@ The `com.yuvimasory.tostring` package provides three traits: `LabeledToStringDef
 * You *must* use `LabeledToStringDef` if your case classes are Squeryl tables. If you don't Squeryl will generate bogus SQL.
 
 ## Performance ##
-The `ToString` traits use Apache Commons Lang under the hood, which uses reflection to find the parameter labels. Therefore there is significant overhead for the creation of any object extending these traits. However, if you use the `*Val` traits instead of the `Def` trait that cost the cost is restricted to object creation alone.
+The `ToString` traits use Apache Commons Lang under the hood, which uses reflection to find the parameter labels. Therefore there is significant overhead for the creation of any object extending these traits. However, if you use the `*Val` traits instead of the `Def` trait the cost is restricted to object creation alone.
 
     [info]       benchmark   ns linear runtime
     [info]          Person  211 ===
