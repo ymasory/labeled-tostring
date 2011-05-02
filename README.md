@@ -42,5 +42,5 @@ The `ToString` traits use Apache Commons Lang under the hood, which uses reflect
     [info]       DefPerson 1474 ========================
 
 ## Warning ##
-* These traits do not produce the right strings in the REPL yet due to the way the REPL wraps code and mangles names.
+* These traits produce unexpected strings in the REPL due to the way the REPL wraps code and mangles names.
 * These traits do not work if you add bodies to your case classes (i.e., additional methods or fields).
