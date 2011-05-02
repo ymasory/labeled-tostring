@@ -16,6 +16,11 @@ Here's our labeled case class:
     Person("John Doe", 30).toString
     //result is  "Person(name=John Doe,age=30)"
 
+## Installation ##
+Add this dependency to your sbt `Project.scala` file:
+
+    val labeledToString = "com.yuvimasory.tostring" %% "labeled-tostring" % "0.5.0"
+
 ## Choosing a trait ##
 The `com.yuvimasory.tostring` package provides three traits: `LabeledToStringDef`, `LabeledToStringVal`, and `LabeledToStringLazyVal`. They override the default case class's `toString` method with a `def`, `val`, and `lazy val`, respectively.
 
