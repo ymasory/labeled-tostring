@@ -30,16 +30,16 @@ The `com.yuvimasory.tostring` package provides three traits: `LabeledToStringDef
 * Both of the `*Val` traits may run slightly faster (since they don't have to recompute `toString` every time it's needed) at the cost of more memory usage.
 * You *must* use `LabeledToStringDef` if your case classes are Squeryl tables. If you don't Squeryl will generate bogus SQL.
 
-## Performance ##
-The `LabeledToString*` traits use Apache Commons Lang under the hood, which uses reflection to find the parameter labels. Therefore there is significant overhead for the creation of any object extending these traits. However, if you use the `*Val` traits instead of the `Def` trait the cost is restricted to object creation alone.
-
 Some [benchmarks](https://github.com/ymasory/labeled-tostring-benchmarks) on object creation:
 
-    [info]                          benchmark   ns linear runtime
-    [info]              CreateCaseClassPerson  287 =====
-    [info]     CreateLabeledToStringValPerson 1295 ========================
-    [info] CreateLabeledToStringLazyValPerson 1585 ==============================
-    [info]     CreateLabeledToStringDefPerson 1281 ========================
+    [info]                          benchmark      ns linear runtime
+    [info]              CreateCaseClassPerson    7.52 =
+    [info]     CreateLabeledToStringValPerson 1423.98 ==============================
+    [info] CreateLabeledToStringLazyValPerson    9.69 =
+    [info]     CreateLabeledToStringDefPerson    7.43 =
+
+Some benchmarks on `toString` calls after object creation:
+Coming Soon.
 
 ## Warning ##
 * These traits produce unexpected strings in the REPL due to the way the REPL wraps code and mangles names.
