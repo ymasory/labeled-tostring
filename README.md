@@ -27,10 +27,13 @@ The `com.yuvimasory.tostring` package provides three traits: `LabeledToStringDef
 * If you're not sure which to use, start with `LabeledToStringDef`, which works in all cases.
 * Consider `LabeledToStringVal` if you know the case class's parameters are either immutable (e.g., primitive types, immutable collections), or have string representations that never change (e.g., arrays).
 * Try `LabeledToStringLazyVal` if you meet the criteria for `LabeledToStringVal` and want lazy initialization.
-* Both of the `*Val` traits may run slightly faster (since they don't have to recompute `toString` every time it's needed) at the cost of more memory usage.
+* Both of the `*Val` traits may run `toString` much faster after the first call, since the store the result. The cost is a bit of memory and a slow initial `toString` call.
 * You *must* use `LabeledToStringDef` if your case classes are Squeryl tables. If you don't Squeryl will generate bogus SQL.
 
-Some [benchmarks](https://github.com/ymasory/labeled-tostring-benchmarks) on object creation:
+## Benchmarks ##
+Benchmarks are in a [separate repository](https://github.com/ymasory/labeled-tostring-benchmarks).
+
+### Object creation ###
 
     [info]                          benchmark      ns linear runtime
     [info]              CreateCaseClassPerson    7.52 =
@@ -38,8 +41,11 @@ Some [benchmarks](https://github.com/ymasory/labeled-tostring-benchmarks) on obj
     [info] CreateLabeledToStringLazyValPerson    9.69 =
     [info]     CreateLabeledToStringDefPerson    7.43 =
 
-Some benchmarks on `toString` calls after object creation:
+### First `toString` call ###
 Coming Soon.
+
+### Subsequent `toString` calls ###
+Coming soon.
 
 ## Warning ##
 * These traits produce unexpected strings in the REPL due to the way the REPL wraps code and mangles names.
