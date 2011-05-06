@@ -35,22 +35,22 @@ Benchmarks are in a [separate repository](https://github.com/ymasory/labeled-tos
 
 ### Object creation ###
 
-> [info]                          benchmark      ns linear runtime
-> [info]              CreateCaseClassPerson    6.66 =
-> [info]     CreateLabeledToStringValPerson 1262.54 ==============================
-> [info] CreateLabeledToStringLazyValPerson    8.68 =
-> [info]     CreateLabeledToStringDefPerson    6.63 =
+    [info]                          benchmark      ns linear runtime
+    [info]              CreateCaseClassPerson    6.66 =
+    [info]     CreateLabeledToStringValPerson 1262.54 ==============================
+    [info] CreateLabeledToStringLazyValPerson    8.68 =
+    [info]     CreateLabeledToStringDefPerson    6.63 =
 
 ### First `toString` call ###
 We don't have a good way to benchmark this presently.
 
 ### Subsequent `toString` calls ###
 
-> [info]                                         benchmark   ns linear runtime
-> [info]              SubsequentToStringsOfCaseClassPerson  750 ========
-> [info]     SubsequentToStringsOfLabeledToStringValPerson  146 =
-> [info] SubsequentToStringsOfLabeledToStringLazyValPerson  185 ==
-> [info]     SubsequentToStringsOfLabeledToStringDefPerson 2594 ==============================
+    [info]                                         benchmark   ns linear runtime
+    [info]              SubsequentToStringsOfCaseClassPerson  750 ========
+    [info]     SubsequentToStringsOfLabeledToStringValPerson  146 =
+    [info] SubsequentToStringsOfLabeledToStringLazyValPerson  185 ==
+    [info]     SubsequentToStringsOfLabeledToStringDefPerson 2594 ==============================
 
 ## Warning ##
 * These traits produce unexpected strings in the REPL due to the way the REPL wraps code and mangles names.
