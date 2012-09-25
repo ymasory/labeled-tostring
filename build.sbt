@@ -17,10 +17,10 @@ crossScalaVersions := Seq(
 
 libraryDependencies += "commons-lang" % "commons-lang" % "2.3"
 
-libraryDependencies <+= (scalaVersion) { v =>
-  val scalaTestVersion = if (v startsWith "2.8") "1.3" else "1.4.RC2"
-  "org.scalatest" % "scalatest" % scalaTestVersion % "test"
-} 
+libraryDependencies <+= (scalaVersion) {
+  case "2.8.0" => "org.scalatest" % "scalatest" % "1.3" % "test"
+  case _       => "org.scalatest" %% "scalatest" % "1.8" % "test"
+}
 
 logLevel := Level.Warn
 
