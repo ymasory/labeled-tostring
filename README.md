@@ -5,21 +5,25 @@ The [Labeled ToString project](https://github.com/ymasory/labeled-tostring) prov
 ## Example ##
 Here's a normal case class:
 
-    case class Person(name: String, age: Int)
-    Person("John Doe", 30).toString
-    //result is "Person(John Doe,30)"
+```scala
+case class Person(name: String, age: Int)
+Person("John Doe", 30).toString
+//result is "Person(John Doe,30)"
+```
 
 Here's our labeled case class:
 
-    import com.yuvimasory.tostring._
-    case class Person(name: String, age: Int) extends LabeledToStringDef
-    Person("John Doe", 30).toString
-    //result is  "Person(name=John Doe,age=30)"
+```scala
+import com.yuvimasory.tostring._
+case class Person(name: String, age: Int) extends LabeledToStringDef
+Person("John Doe", 30).toString
+//result is  "Person(name=John Doe,age=30)"
+```
 
 ## Installation ##
 labeled-tostring is hosted on [Maven Central](http://central.maven.org/maven2/com/yuvimasory/). You can add it as a dependency to your `build.sbt` file. It is built for Scala 2.8.0 through 2.9.2.
 
-```
+```scala
 libraryDependencies += "com.yuvimasory.tostring" %% "labeled-tostring" % "0.5.0"
 ```
 
