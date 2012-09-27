@@ -24,7 +24,7 @@ Person("John Doe", 30).toString
 labeled-tostring is hosted on [Maven Central](http://central.maven.org/maven2/com/yuvimasory/). You can add it as a dependency to your `build.sbt` file. It is built for Scala 2.8.0 through 2.9.2.
 
 ```scala
-libraryDependencies += "com.yuvimasory.tostring" %% "labeled-tostring" % "0.5.0"
+libraryDependencies += "com.yuvimasory" %% "labeled-tostring" % "0.5.0"
 ```
 
 ## Choosing a trait ##
