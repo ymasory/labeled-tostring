@@ -17,9 +17,11 @@ Here's our labeled case class:
     //result is  "Person(name=John Doe,age=30)"
 
 ## Installation ##
-Add this dependency to your sbt `Project.scala` file:
+labeled-tostring is hosted on [Maven Central](http://central.maven.org/maven2/com/yuvimasory/). You can add it as a dependency to your `build.sbt` file. It is built for Scala 2.8.0 through 2.9.2.
 
-    val labeledToString = "com.yuvimasory.tostring" %% "labeled-tostring" % "0.5.0"
+```
+libraryDependencies += "com.yuvimasory.tostring" %% "labeled-tostring" % "0.5.0"
+```
 
 ## Choosing a trait ##
 The `com.yuvimasory.tostring` package provides three traits: `LabeledToStringDef`, `LabeledToStringVal`, and `LabeledToStringLazyVal`. They override the default case class's `toString` method with a `def`, `val`, and `lazy val`, respectively.
