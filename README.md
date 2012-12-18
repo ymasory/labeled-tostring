@@ -1,4 +1,7 @@
 # Labeled ToString #
+
+[![Build Status](http://ci.yuvimasory.com/job/labeled-tostring/badge/icon)](http://ci.yuvimasory.com/job/labeled-tostring/)
+
 ## Overview ##
 The [Labeled ToString project](https://github.com/ymasory/labeled-tostring) provides several traits you can mix into case classes in order to get `toString` representations that include parameter labels. That means you get <strong><tt>Person(name=John Doe,age=30)</tt></strong> instead of <strong><tt>Person(John Doe,30)</tt></strong>.
 
